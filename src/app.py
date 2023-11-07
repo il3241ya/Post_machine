@@ -1,12 +1,12 @@
 import customtkinter
-from POST_MACHINE_class import post_machine
+from post_machine import Post_machine
 from PIL import Image
 
 
-class App(customtkinter.CTk, post_machine):
+class App(customtkinter.CTk, Post_machine):
     """
-    class App(customtkinter.CTk, post_machine),
-    наследует от customtkinter.CTk, post_machine.
+    class App(customtkinter.CTk, Post_machine),
+    наследует от customtkinter.CTk, Post_machine.
 
     Назначение - класс приложения, для работы
     с машиной Поста. В нем реализован весь необходимый интерфейс
@@ -73,7 +73,7 @@ class App(customtkinter.CTk, post_machine):
 
     _start(self)
         Метод описывающий работу машины и соединяющий возвращаемые значения,
-        из класса post_machine(), и интерфейс программы. Запускается при
+        из класса Post_machine(), и интерфейс программы. Запускается при
         нажатии на кнопку "начать выполнение" в интерфейсе. Результатом
         работы данного метода является моделирование машины Поста
         выполняющую программу пользователя.
@@ -453,8 +453,8 @@ class App(customtkinter.CTk, post_machine):
                            "для машины Поста.")
         text.configure(state="disabled")
         # Переменная для храния изображения ленты
-        img_tape = customtkinter.CTkImage(light_image=Image.open("img/tape.png"),
-                                          dark_image=Image.open("img/tape.png"),
+        img_tape = customtkinter.CTkImage(light_image=Image.open("../../img/tape.png"),
+                                          dark_image=Image.open("../img/tape.png"),
                                           size=(850, 150))
         # добавление изображения в window_post_mac
         label_img = customtkinter.CTkLabel(window_post_mac, image=img_tape, text="")
@@ -650,7 +650,7 @@ class App(customtkinter.CTk, post_machine):
     def _start(self):
         """
         Метод описывающий работу машины и соединяющий возвращаемые значения, из класса
-        post_machine(), и интерфейс программы. Запускается при нажатии на кнопку
+        Post_machine(), и интерфейс программы. Запускается при нажатии на кнопку
         "начать выполнение" в интерфейсе. Результатом работы данного метода является
         моделирование машины Поста выполняющую программу пользователя
         """
@@ -684,7 +684,7 @@ class App(customtkinter.CTk, post_machine):
             self.first_tape_list) // 2  # индекс пишущей головки машины, вначале задаем ей положение в середине
 
         # инициализируем машину
-        p_m = post_machine(True, self.first_tape_list, self.wr_head)  # создаем объект из класса post_machine()
+        p_m = Post_machine(True, self.first_tape_list, self.wr_head)  # создаем объект из класса Post_machine()
 
         # делаем запуск
         work = True  # состояние машины
@@ -709,7 +709,7 @@ class App(customtkinter.CTk, post_machine):
                     self.step_out.insert("0.2", step)
                     self.step_out.configure(state="disabled")
 
-                    ex = []  # список для хранения возвращаемых значений из метода command_method класса post_machine
+                    ex = []  # список для хранения возвращаемых значений из метода command_method класса Post_machine
                     ex = p_m.command_method(current_command)
 
                     # В зависимости от возвращаемых значений проигрываем один из возможных сценариев

@@ -1,5 +1,5 @@
 import pytest
-from APP_class import App
+from app import App
 
 def test_corect_input_tape():
     app = App()
