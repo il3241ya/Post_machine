@@ -4,7 +4,9 @@
 
 Для установки выполните:
 
-```pip install -r requirements.txt```
+```bash
+pip install -r requirements.txt
+```
 
 После запустите файл ```main.py```
 
